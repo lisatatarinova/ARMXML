@@ -1,6 +1,7 @@
 import javax.swing.*;
-import java.awt.event.*;
-import java.io.IOException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.*;
 
 public class JDialogTest extends JFrame {
     private static final long serialVersionUID = 1L;
@@ -13,16 +14,12 @@ public class JDialogTest extends JFrame {
         JButton button1 = new JButton("COMPONENT_TYPES");
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                try {
+               try {
                     CreateNewTable component_table = new CreateNewTable();
                 } catch (IOException e1) {
                     //e1.printStackTrace();
                     System.out.println("Уже в JDialogTest я чем-то недовольна!!!");
                 }
-
-                //JDialog dialog = createDialog("ARXML-viewer->COMPONENT_TYPES", true);
-                //dialog.setVisible(true);
-
             }
         });
         JButton button2 = new JButton("DATA_TYPES");
@@ -49,7 +46,6 @@ public class JDialogTest extends JFrame {
         setSize(450, 180);
         setVisible(true);
     }
-
     /**
      * Функция создания диалогового окна.
      *
