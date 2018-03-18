@@ -11,16 +11,13 @@ public class openFile {
 
     public BufferedReader openFile() {
         try {
-            //data = new BufferedReader(new FileReader("C:\\Users\\lisa\\Desktop\\ARMXML\\src\\data_f.txt"));
-            if (ret == JFileChooser.APPROVE_OPTION) {
+             if (ret == JFileChooser.APPROVE_OPTION) {
                 File file = fileopen.getSelectedFile();
                 data = new BufferedReader(new FileReader(file));
-            }
-
-            //чтение построчно
-        } catch (FileNotFoundException e2) {
+             }
+            } catch (FileNotFoundException e2) {
             System.out.println("Не могу найти файл");
-        }
+            }
         return data;
     }
 

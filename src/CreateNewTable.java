@@ -7,12 +7,10 @@ public class CreateNewTable extends JFrame {
     private Object[] columnsHeader = new String[] {"COLUMN_1", "COLUMN_2",
             "COLUMN_3"};
 
-    public CreateNewTable() throws IOException {
+    public CreateNewTable(BufferedReader data) throws IOException {
         super("ARXML-viewer");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         Object[][] array = new Object[1][3];
-        openFile openFile_1 = new openFile();
-        BufferedReader data = openFile_1.getData();
 
         String s;
         int f = 0;

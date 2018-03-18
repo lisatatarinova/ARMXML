@@ -6,7 +6,7 @@ import java.io.*;
 public class JDialogTest extends JFrame {
     private static final long serialVersionUID = 1L;
 
-    public JDialogTest() {
+    public JDialogTest(BufferedReader data) {
         super("ARXML-viewer");
         // Выход из программы при закрытии
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -15,7 +15,8 @@ public class JDialogTest extends JFrame {
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                try {
-                    CreateNewTable component_table = new CreateNewTable();
+                    CreateNewTable component_table = new CreateNewTable(data);
+
                 } catch (IOException e1) {
                     //e1.printStackTrace();
                     System.out.println("Уже в JDialogTest я чем-то недовольна!!!");
