@@ -1,11 +1,22 @@
+import fileopenning.openFile;
+import parsercode.XMLSAXTools;
+
 import java.io.BufferedReader;
+import java.io.File;
+import java.util.ArrayList;
 
 public class TheMain {
     public static void main(String arg[]){
-        //new CreateNewTable();
-        openFile openNewFile = new openFile();
-        BufferedReader data = openNewFile.openFile();
-        JDialogTest newDialogWindow = new JDialogTest(data);
+
+        XMLSAXTools parser = new XMLSAXTools();
+        try {
+            parser.XMLParse();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        JDialogTest newDialogWindow = new JDialogTest();
 
     }
 }

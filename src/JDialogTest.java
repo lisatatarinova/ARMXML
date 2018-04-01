@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,35 +7,34 @@ import java.io.*;
 public class JDialogTest extends JFrame {
     private static final long serialVersionUID = 1L;
 
-    public JDialogTest(BufferedReader data) {
+    public JDialogTest() {
         super("ARXML-viewer");
         // Выход из программы при закрытии
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        // Кнопки для создания диалоговых окон
+        /* Кнопки для создания диалоговых окон
+        Кнопки по каждому из основных элементов arxml-файла, поэтому создать три разных класса
+         */
         JButton button1 = new JButton("COMPONENT_TYPES");
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               try {
-                    CreateNewTable component_table = new CreateNewTable(data);
 
-                } catch (IOException e1) {
-                    //e1.printStackTrace();
-                    System.out.println("Уже в JDialogTest я чем-то недовольна!!!");
-                }
             }
         });
         JButton button2 = new JButton("DATA_TYPES");
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JDialog dialog = createDialog("ARXML-viewer->DATA_TYPES", true);
-                dialog.setVisible(true);
+
+                try {
+                    CreateNewDataTypeTable createNewDataTypeTable = new CreateNewDataTypeTable();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
             }
         });
         JButton button3 = new JButton("INTERFACES");
         button3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JDialog dialog = createDialog("ARXML-viewer->INTERFACES", true);
-                dialog.setVisible(true);
+
             }
         });
         // Создание панели содержимого с размещением кнопок
