@@ -1,6 +1,3 @@
-package parsercode;
-
-
 import javax.swing.*;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -8,23 +5,16 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.*;
 import org.xml.sax.helpers.DefaultHandler;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 
 
 public class XMLSAXTools {
 
     public void XMLParse () throws Exception  {
-        File myFile = new File("/home/lisa/Документы/armtxt.txt");
-        if(myFile.exists()){
-            myFile.delete();
-            myFile.createNewFile();
-        }
+        ClearFile clearFile = new ClearFile("/home/lisa/Документы/armtxt.txt");
+
         SAXParserFactory spf = SAXParserFactory.newInstance();
         spf.setNamespaceAware(true);
         spf.setValidating(true);
@@ -77,14 +67,19 @@ class SAXHandlerARXML extends DefaultHandler {
     }
 
     public void endDocument() {
+        try(FileWriter writer = new FileWriter("/home/lisa/Документы/armtxt.txt", true)) {
+            writer.write("END");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.out.println("END: ");
     }
 
     public void startElement(String uri, String localName, String qname, Attributes attr) {
         try (FileWriter writer = new FileWriter("/home/lisa/Документы/armtxt.txt", true)) {
-            writer.write("Start element: local name: ");
+            //writer.write("Start element: local name: ");
             writer.write(localName);
-            writer.write("\n");
+            writer.write(">--\n");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -95,7 +90,7 @@ class SAXHandlerARXML extends DefaultHandler {
 
     public void endElement(String uri, String localName, String qname) {
         try (FileWriter writer = new FileWriter("/home/lisa/Документы/armtxt.txt", true)) {
-            writer.write("End element: local name: ");
+            writer.write("-->");
             writer.write(localName);
             writer.write("\n");
         } catch (IOException e) {
@@ -106,9 +101,9 @@ class SAXHandlerARXML extends DefaultHandler {
 
     public void characters(char[] ch, int start, int length) {
         try (FileWriter writer = new FileWriter("/home/lisa/Документы/armtxt.txt", true)) {
-            writer.write("Characters: ");
-            writer.write(new String(ch, start, length));
-            writer.write("\n");
+              // writer.write("Characters: ");
+               writer.write("Characters: " + new String(ch, start, length)+"\n");
+               //writer.write("\n");
         } catch (IOException e) {
             e.printStackTrace();
         }
