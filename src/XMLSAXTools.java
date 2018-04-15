@@ -8,11 +8,12 @@ import org.xml.sax.helpers.DefaultHandler;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import javax.swing.*;
+import java.awt.event.*;
 
 public class XMLSAXTools {
 
-    public void XMLParse () throws Exception  {
+    public void XMLParse (File file) throws Exception  {
         ClearFile clearFile = new ClearFile("/home/lisa/Документы/armtxt.txt");
 
         SAXParserFactory spf = SAXParserFactory.newInstance();
@@ -22,12 +23,9 @@ public class XMLSAXTools {
         XMLReader reader = parser.getXMLReader();
         reader.setErrorHandler(new ErrorHandlerARXml());
 
-        /* чтение документа из файла*/
-        JFileChooser fileopen = new JFileChooser();
-        int ret = fileopen.showDialog(null, "Открыть файл");
-        File file = fileopen.getSelectedFile();
-
-        parser.parse(file, new SAXHandlerARXML());
+        try {
+            parser.parse(file, new SAXHandlerARXML());
+        } catch (Exception e){System.out.println("Ошибка открытия файла");}
 
         SAXHandlerARXML saxHandlerARXML = new SAXHandlerARXML();
 
