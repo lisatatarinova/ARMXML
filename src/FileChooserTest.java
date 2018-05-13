@@ -48,18 +48,7 @@ public class FileChooserTest extends JFrame
         btnFileFilter1.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed (ActionEvent e) {
-                JFileChooser chooser = new JFileChooser();
-                FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                        ".arxml (AUTOSAR-Files)", "arxml");
-                chooser.setFileFilter(filter);
-                int returnVal = chooser.showOpenDialog(FileChooserTest.this);
-                if(returnVal == JFileChooser.APPROVE_OPTION) {
-                    System.out.println("Вы выбрали этот файл: " +
-                            chooser.getSelectedFile().getName());
-                }
-                ARXMLViewer arxmlViewer = new ARXMLViewer();
-                // treeViewer.xmlSetUp();
-                arxmlViewer.createUI(chooser.getSelectedFile());
+                doit();
             }
         });
 
@@ -73,6 +62,21 @@ public class FileChooserTest extends JFrame
         setVisible(true);
 
 
+    }
+
+    public void doit (){
+        JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                ".arxml (AUTOSAR-Files)", "arxml");
+        chooser.setFileFilter(filter);
+        int returnVal = chooser.showOpenDialog(FileChooserTest.this);
+        if(returnVal == JFileChooser.APPROVE_OPTION) {
+            System.out.println("Вы выбрали этот файл: " +
+                    chooser.getSelectedFile().getName());
+        }
+        ARXMLViewer arxmlViewer = new ARXMLViewer();
+        // treeViewer.xmlSetUp();
+        arxmlViewer.createUI(chooser.getSelectedFile());
     }
 
     public File getFileChooser (){
