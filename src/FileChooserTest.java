@@ -12,6 +12,7 @@ public class FileChooserTest extends JFrame
 
     private final String[][] FILTERS = {{"xml", "Файлы XML (*.xml)"},
             {"arxml" , "Файлы AUTOSAR(*.arxml)"}};
+
     public FileChooserTest() {
         super("ARXML-viewer");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -78,7 +79,7 @@ public class FileChooserTest extends JFrame
             return this.fileChooser.getSelectedFile();
     }
 
-    public static void main(String arg[])
+   public static void main(String arg[])
     {
         // Локализация компонентов окна JFileChooser
         UIManager.put(
