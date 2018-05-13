@@ -1,4 +1,5 @@
-import javax.swing.*;
+package ARXMLcode;
+
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
@@ -8,8 +9,6 @@ import org.xml.sax.helpers.DefaultHandler;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import javax.swing.*;
-import java.awt.event.*;
 
 public class XMLSAXTools {
 

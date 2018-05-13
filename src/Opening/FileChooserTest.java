@@ -1,3 +1,6 @@
+package Opening;
+import ARXMLcode.XMLSAXTools;
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.File;
@@ -74,7 +77,7 @@ public class FileChooserTest extends JFrame
             System.out.println("Вы выбрали этот файл: " +
                     chooser.getSelectedFile().getName());
         }
-        ARXMLViewer arxmlViewer = new ARXMLViewer();
+        ARXMLcode.ARXMLViewer arxmlViewer = new ARXMLcode.ARXMLViewer();
         // treeViewer.xmlSetUp();
         arxmlViewer.createUI(chooser.getSelectedFile());
     }

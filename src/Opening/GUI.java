@@ -1,3 +1,5 @@
+package Opening;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -44,7 +46,7 @@ class GUI extends JFrame {
                     System.out.println("Вы выбрали этот файл: " +
                             chooser.getSelectedFile().getName());
                 }
-                ARXMLViewer arxmlViewer = new ARXMLViewer();
+                ARXMLcode.ARXMLViewer arxmlViewer = new ARXMLcode.ARXMLViewer();
                 // treeViewer.xmlSetUp();
                 arxmlViewer.createUI(chooser.getSelectedFile());
             }
@@ -79,15 +81,13 @@ class GUI extends JFrame {
         frame.setVisible(true);
         return null;
     }
-    
+
             public static void main(String[] args) {
                 javax.swing.SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         JFrame.setDefaultLookAndFeelDecorated(true);
                         createGUI();
                     }});
-
-                   // new FileChooserTest();
                 }
             }
 
